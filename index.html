@@ -187,6 +187,9 @@
     <!-- MAIN REACT CODE -->
     <script type="text/babel">
 
+        // --- CONFIGURATION ---
+        const MONETAG_DIRECT_LINK = "https://thubanoa.com/400/7679310";
+
         // --- DATA GENERATOR WITH REAL IMAGES ---
         const NAMES = ["Luna", "Aria", "Maya", "Zoey", "Ivy", "Ruby", "Lila", "Nora", "Eva", "Sia", "Mia", "Lea", "Jade", "Faye", "Skye", "Bree", "Hope", "Joy", "Dawn", "Rose", "Star"];
         const CATEGORIES = ["Brunette", "Blonde", "Redhead", "Anime", "Fantasy", "Cyberpunk"];
@@ -375,7 +378,11 @@
                             src={profile.image}
                             alt={profile.name}
                             onLoad={() => setImageLoaded(true)}
-                            onClick={(e) => { e.stopPropagation(); onImageClick(profile); }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                window.open(MONETAG_DIRECT_LINK, '_blank');
+                                onImageClick(profile);
+                            }}
                             className={`w-full h-full object-cover transition-all duration-500 ${imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
                         />
 
@@ -454,7 +461,8 @@
                                 src={profile.image}
                                 alt={profile.name}
                                 onLoad={() => setImageLoaded(true)}
-                                className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                                onClick={() => window.open(MONETAG_DIRECT_LINK, '_blank')}
+                                className={`w-full h-full object-cover cursor-pointer transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent"></div>
                         </div>
